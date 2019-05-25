@@ -1,11 +1,12 @@
-package com.machineinsight_it.postviewer
+package com.machineinsight_it.postviewer.ui.main
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
+import com.machineinsight_it.postviewer.R
 import com.machineinsight_it.postviewer.databinding.ActivityMainBinding
 import com.machineinsight_it.postviewer.posts.detail.PostDetailFragment
-import com.machineinsight_it.postviewer.posts.list.PostsListFragment
+import com.machineinsight_it.postviewer.ui.posts.list.PostsListFragment
 
 private const val TAG_POSTS_LIST = "posts_list"
 private const val TAG_POST_DETAIL = "post_detail"
@@ -40,7 +41,10 @@ class MainActivity : AppCompatActivity() {
         postsListFragment?.let {
             supportFragmentManager
                 .beginTransaction()
-                .add(R.id.content, it, TAG_POSTS_LIST)
+                .add(
+                    R.id.content, it,
+                    TAG_POSTS_LIST
+                )
                 .commit()
         }
     }

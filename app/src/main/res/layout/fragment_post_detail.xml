@@ -6,7 +6,7 @@
     <data>
         <variable
             name="model"
-            type="com.machineinsight_it.postviewer.posts.list.PostsListViewModel"/>
+            type="com.machineinsight_it.postviewer.ui.posts.list.PostsListViewModel"/>
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

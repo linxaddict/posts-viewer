@@ -1,4 +1,4 @@
-package com.machineinsight_it.postviewer.posts.detail
+package com.machineinsight_it.postviewer.ui.posts.detail
 
 import androidx.lifecycle.ViewModel
 

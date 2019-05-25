@@ -1,4 +1,4 @@
-package com.machineinsight_it.postviewer.posts.list
+package com.machineinsight_it.postviewer.ui.posts.list
 
 import android.os.Bundle
 import android.view.LayoutInflater
