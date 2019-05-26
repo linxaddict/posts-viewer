@@ -1,8 +1,8 @@
 package com.machineinsight_it.postviewer.ui.posts.list
 
 import androidx.lifecycle.ViewModel
-import javax.inject.Inject
+import com.machineinsight_it.postviewer.api.PostsApi
 
-class PostsListViewModel @Inject constructor() : ViewModel() {
+class PostsListViewModel(private val postsApi: PostsApi) : ViewModel() {
 
 }
