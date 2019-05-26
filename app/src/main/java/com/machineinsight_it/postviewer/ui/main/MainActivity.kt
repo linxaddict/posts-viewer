@@ -5,7 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import com.machineinsight_it.postviewer.R
 import com.machineinsight_it.postviewer.databinding.ActivityMainBinding
-import com.machineinsight_it.postviewer.posts.detail.PostDetailFragment
+import com.machineinsight_it.postviewer.ui.posts.detail.PostDetailFragment
 import com.machineinsight_it.postviewer.ui.posts.list.PostsListFragment
 
 private const val TAG_POSTS_LIST = "posts_list"

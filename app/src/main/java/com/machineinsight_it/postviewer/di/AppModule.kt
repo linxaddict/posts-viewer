@@ -1,4 +1,4 @@
-package com.machineinsight_it.postviewer.di.modules
+package com.machineinsight_it.postviewer.di
 
 import android.app.Application
 import android.content.Context
