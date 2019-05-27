@@ -8,7 +8,7 @@ import io.reactivex.Flowable
 
 class PostsRepository(private val api: PostsApi) {
     fun getPosts(): Flowable<Post> =
-        api.getPosts()
+        api.fetchPosts()
             .toFlowable()
             .flatMapIterable { it }
             .filter { it.canBeCastToPost() }

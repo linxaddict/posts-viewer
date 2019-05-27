@@ -9,17 +9,17 @@ import retrofit2.http.Query
 
 interface PostsApi {
     @GET("/posts")
-    fun getPosts(): Single<List<PostDto>>
+    fun fetchPosts(): Single<List<PostDto>>
 
     @GET("/comments")
-    fun getCommentsForPost(@Query("postId") postId: Int): Single<List<CommentDto>>
+    fun fetchComments(@Query("postId") postId: Int): Single<List<CommentDto>>
 
     @GET("/comments")
-    fun getAllComments(): Single<List<CommentDto>>
+    fun fetchComments(): Single<List<CommentDto>>
 
     @GET("/users")
-    fun getUser(@Query("id") userId: Int): Single<List<UserDto>>
+    fun fetchUser(@Query("id") userId: Int): Single<List<UserDto>>
 
     @GET("/users")
-    fun getAllUsers(): Single<List<UserDto>>
+    fun fetchUsers(): Single<List<UserDto>>
 }

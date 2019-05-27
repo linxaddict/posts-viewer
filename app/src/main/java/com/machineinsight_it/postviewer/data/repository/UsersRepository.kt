@@ -8,7 +8,7 @@ import io.reactivex.Flowable
 
 class UsersRepository(private val api: PostsApi) {
     fun getUsers(): Flowable<User> =
-        api.getAllUsers()
+        api.fetchUsers()
             .toFlowable()
             .flatMapIterable { it }
             .filter { it.canBeCastToUser() }
