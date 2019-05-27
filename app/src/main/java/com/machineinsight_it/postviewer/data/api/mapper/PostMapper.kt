@@ -3,22 +3,31 @@ package com.machineinsight_it.postviewer.data.api.mapper
 import com.machineinsight_it.postviewer.data.api.model.PostDto
 import com.machineinsight_it.postviewer.domain.Post
 
-fun PostDto.toPost(): Post? {
+fun PostDto.canBeCastToPost(): Boolean {
     if (userId == null) {
-        return null
+        return false
     }
 
     if (id == null) {
-        return id
+        return false
     }
 
     if (title == null) {
-        return title
+        return false
     }
 
     if (body == null) {
-        return null
+        return false
     }
+
+    return true
+}
+
+fun PostDto.toPost(): Post {
+    checkNotNull(userId)
+    checkNotNull(id)
+    checkNotNull(title)
+    checkNotNull(body)
 
     return Post(
         userId = userId,

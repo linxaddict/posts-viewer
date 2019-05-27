@@ -1,8 +1,9 @@
-package com.machineinsight_it.postviewer.data.api
+package com.machineinsight_it.postviewer.data.api.di
 
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import com.machineinsight_it.postviewer.BuildConfig
+import com.machineinsight_it.postviewer.data.api.PostsApi
 import dagger.Module
 import dagger.Provides
 import okhttp3.OkHttpClient

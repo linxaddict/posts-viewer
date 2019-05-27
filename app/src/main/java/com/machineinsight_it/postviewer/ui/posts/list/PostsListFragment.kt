@@ -24,6 +24,10 @@ class PostsListFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_posts_list, container, false)
+        binding.model = viewModel
+
+        viewModel.fetch()
+
         return binding.root
     }
 }

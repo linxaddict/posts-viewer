@@ -4,6 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
 import com.machineinsight_it.postviewer.data.api.PostsApi
+import com.machineinsight_it.postviewer.data.repository.PostsRepository
 import com.machineinsight_it.postviewer.ui.di.ViewModelKey
 import dagger.Module
 import dagger.Provides
@@ -28,7 +29,7 @@ abstract class PostsListModule {
         @Provides
         @IntoMap
         @ViewModelKey(PostsListViewModel::class)
-        fun providePostsListViewModel(postsApi: PostsApi): ViewModel = PostsListViewModel(postsApi)
+        fun providePostsListViewModel(postsRepository: PostsRepository): ViewModel = PostsListViewModel(postsRepository)
     }
 
     @Module

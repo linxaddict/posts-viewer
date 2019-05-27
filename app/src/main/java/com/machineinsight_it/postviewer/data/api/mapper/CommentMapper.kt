@@ -3,22 +3,31 @@ package com.machineinsight_it.postviewer.data.api.mapper
 import com.machineinsight_it.postviewer.data.api.model.CommentDto
 import com.machineinsight_it.postviewer.domain.Comment
 
-fun CommentDto.toComment(): Comment? {
+fun CommentDto.canBeCastToComment(): Boolean {
     if (postId == null) {
-        return null
+        return false
     }
 
     if (id == null) {
-        return null
+        return false
     }
 
     if (email == null) {
-        return null
+        return false
     }
 
     if (body == null) {
-        return null
+        return false
     }
+
+    return true
+}
+
+fun CommentDto.toComment(): Comment {
+    checkNotNull(postId)
+    checkNotNull(id)
+    checkNotNull(email)
+    checkNotNull(body)
 
     return Comment(
         postId = postId,

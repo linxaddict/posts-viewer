@@ -2,7 +2,8 @@ package com.machineinsight_it.postviewer.di
 
 import android.app.Application
 import com.machineinsight_it.postviewer.PostViewerApplication
-import com.machineinsight_it.postviewer.data.api.ApiModule
+import com.machineinsight_it.postviewer.data.api.di.ApiModule
+import com.machineinsight_it.postviewer.data.repository.di.RepositoryModule
 import com.machineinsight_it.postviewer.ui.di.UiModule
 import dagger.BindsInstance
 import dagger.Component
@@ -12,7 +13,7 @@ import javax.inject.Singleton
 @Singleton
 @Component(
     modules = [
-        AndroidInjectionModule::class, AppModule::class, ApiModule::class, UiModule::class
+        AndroidInjectionModule::class, AppModule::class, ApiModule::class, UiModule::class, RepositoryModule::class
     ]
 )
 interface AppComponent {

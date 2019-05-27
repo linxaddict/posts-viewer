@@ -3,18 +3,26 @@ package com.machineinsight_it.postviewer.data.api.mapper
 import com.machineinsight_it.postviewer.data.api.model.UserDto
 import com.machineinsight_it.postviewer.domain.User
 
-fun UserDto.toUser(): User? {
+fun UserDto.canBeCastToUser(): Boolean {
     if (id == null) {
-        return null
+        return false
     }
 
     if (username == null) {
-        return null
+        return false
     }
 
     if (email == null) {
-        return null
+        return false
     }
+
+    return true
+}
+
+fun UserDto.toUser(): User {
+    checkNotNull(id)
+    checkNotNull(username)
+    checkNotNull(email)
 
     return User(
         id = id,

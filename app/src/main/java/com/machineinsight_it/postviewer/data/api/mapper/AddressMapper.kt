@@ -3,18 +3,26 @@ package com.machineinsight_it.postviewer.data.api.mapper
 import com.machineinsight_it.postviewer.data.api.model.AddressDto
 import com.machineinsight_it.postviewer.domain.Address
 
-fun AddressDto.toAddress(): Address? {
+fun AddressDto.canBeCastToAddress(): Boolean {
     if (street == null) {
-        return null
+        return false
     }
 
     if (city == null) {
-        return null
+        return false
     }
 
     if (zipcode == null) {
-        return null
+        return false
     }
+
+    return true
+}
+
+fun AddressDto.toAddress(): Address {
+    checkNotNull(street)
+    checkNotNull(city)
+    checkNotNull(zipcode)
 
     return Address(
         street = street,
