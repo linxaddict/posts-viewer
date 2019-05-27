@@ -1,8 +1,8 @@
-package com.machineinsight_it.postviewer.api
+package com.machineinsight_it.postviewer.data.api
 
-import com.machineinsight_it.postviewer.api.model.CommentDto
-import com.machineinsight_it.postviewer.api.model.PostDto
-import com.machineinsight_it.postviewer.api.model.UserDto
+import com.machineinsight_it.postviewer.data.api.model.CommentDto
+import com.machineinsight_it.postviewer.data.api.model.PostDto
+import com.machineinsight_it.postviewer.data.api.model.UserDto
 import io.reactivex.Single
 import retrofit2.http.GET
 import retrofit2.http.Query

@@ -1,4 +1,4 @@
-package com.machineinsight_it.postviewer.api.model
+package com.machineinsight_it.postviewer.data.api.model
 
 data class GeoDto(
     val lat: String?,

@@ -1,4 +1,4 @@
-package com.machineinsight_it.postviewer.api
+package com.machineinsight_it.postviewer.data.api
 
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder

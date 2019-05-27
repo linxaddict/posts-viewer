@@ -3,7 +3,7 @@ package com.machineinsight_it.postviewer.ui.posts.list
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
-import com.machineinsight_it.postviewer.api.PostsApi
+import com.machineinsight_it.postviewer.data.api.PostsApi
 import com.machineinsight_it.postviewer.ui.di.ViewModelKey
 import dagger.Module
 import dagger.Provides

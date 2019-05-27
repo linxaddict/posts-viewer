@@ -2,7 +2,7 @@ package com.machineinsight_it.postviewer.di
 
 import android.app.Application
 import com.machineinsight_it.postviewer.PostViewerApplication
-import com.machineinsight_it.postviewer.api.ApiModule
+import com.machineinsight_it.postviewer.data.api.ApiModule
 import com.machineinsight_it.postviewer.ui.di.UiModule
 import dagger.BindsInstance
 import dagger.Component
