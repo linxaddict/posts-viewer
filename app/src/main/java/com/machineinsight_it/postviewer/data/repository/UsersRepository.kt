@@ -4,6 +4,7 @@ import com.machineinsight_it.postviewer.data.api.PostsApi
 import com.machineinsight_it.postviewer.data.api.mapper.canBeCastToUser
 import com.machineinsight_it.postviewer.data.api.mapper.toEntity
 import com.machineinsight_it.postviewer.data.db.dao.UserDao
+import com.machineinsight_it.postviewer.data.db.mapper.toPost
 import com.machineinsight_it.postviewer.data.db.mapper.toUser
 import com.machineinsight_it.postviewer.domain.User
 import io.reactivex.Flowable
@@ -17,5 +18,5 @@ class UsersRepository(private val api: PostsApi, private val dao: UserDao) {
             .map { it.toEntity() }
             .doOnNext { dao.insertUsers(it) }
             .map { it.toUser() }
-            .onExceptionResumeNext { dao.getUsers().map { it.toUser() } }
+            .onErrorResumeNext { _: Throwable ->  dao.getUsers().map { it.toUser() }}
 }

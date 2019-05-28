@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">PostViewer</string>
+    <string name="error_cannot_fetch_posts">Unable to fetch posts</string>
 </resources>

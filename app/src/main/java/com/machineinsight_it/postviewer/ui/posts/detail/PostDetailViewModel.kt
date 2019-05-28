@@ -1,7 +1,7 @@
 package com.machineinsight_it.postviewer.ui.posts.detail
 
-import androidx.lifecycle.ViewModel
+import com.machineinsight_it.postviewer.ui.base.BaseViewModel
 
-class PostDetailViewModel : ViewModel() {
+class PostDetailViewModel : BaseViewModel() {
 
 }
