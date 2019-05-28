@@ -35,6 +35,7 @@ class PostsListFragment : Fragment() {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_posts_list, container, false)
         binding.model = viewModel
         binding.itemBinding = ItemBinding.of<PostViewModel>(BR.model, R.layout.row_post)
+        binding.swipeRefresh.setOnRefreshListener { viewModel.fetchPosts() }
 
         viewModel.fetchPosts()
 

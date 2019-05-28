@@ -1,6 +1,7 @@
 package com.machineinsight_it.postviewer.ui.posts.list
 
 import androidx.databinding.ObservableArrayList
+import androidx.databinding.ObservableBoolean
 import com.machineinsight_it.postviewer.R
 import com.machineinsight_it.postviewer.data.repository.PostsRepository
 import com.machineinsight_it.postviewer.ui.base.BaseViewModel
@@ -10,6 +11,7 @@ import io.reactivex.schedulers.Schedulers
 
 class PostsListViewModel(private val postsRepository: PostsRepository) : BaseViewModel() {
     val posts = ObservableArrayList<PostViewModel>()
+    val fetchInProgress = ObservableBoolean()
     val fetchingErrorEvent = ResourceTextMessageEvent()
 
     private fun handlePostsFetched(results: List<PostViewModel>) {
@@ -25,6 +27,8 @@ class PostsListViewModel(private val postsRepository: PostsRepository) : BaseVie
         postsRepository.getPosts()
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
+            .doOnSubscribe { fetchInProgress.set(true) }
+            .doFinally { fetchInProgress.set(false) }
             .map { PostViewModel(it) }
             .toList()
             .subscribe(
