@@ -1,11 +1,12 @@
-package com.machineinsight_it.postviewer.data.db
+package com.machineinsight_it.postviewer.data.db.model
 
+import androidx.room.ColumnInfo
 import androidx.room.Embedded
 import androidx.room.PrimaryKey
 
 data class AddressEntity(
-    @PrimaryKey
-    var id: Int,
+    @ColumnInfo(name = "addressId")
+    var id: Int?,
 
     var street: String,
     var suite: String?,

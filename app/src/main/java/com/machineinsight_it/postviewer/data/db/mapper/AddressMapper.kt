@@ -1,6 +1,6 @@
 package com.machineinsight_it.postviewer.data.db.mapper
 
-import com.machineinsight_it.postviewer.data.db.AddressEntity
+import com.machineinsight_it.postviewer.data.db.model.AddressEntity
 import com.machineinsight_it.postviewer.domain.Address
 
 fun AddressEntity.toAddress(): Address {

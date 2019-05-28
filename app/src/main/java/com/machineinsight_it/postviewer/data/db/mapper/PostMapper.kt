@@ -1,6 +1,6 @@
 package com.machineinsight_it.postviewer.data.db.mapper
 
-import com.machineinsight_it.postviewer.data.db.PostEntity
+import com.machineinsight_it.postviewer.data.db.model.PostEntity
 import com.machineinsight_it.postviewer.domain.Post
 
 fun PostEntity.toPost(): Post = Post(

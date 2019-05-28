@@ -1,9 +1,9 @@
-package com.machineinsight_it.postviewer.data.db
+package com.machineinsight_it.postviewer.data.db.model
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
-@Entity
+@Entity(tableName = "posts")
 data class PostEntity(
     @PrimaryKey
     var id: Int,

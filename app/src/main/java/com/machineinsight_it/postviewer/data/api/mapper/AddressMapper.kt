@@ -1,6 +1,7 @@
 package com.machineinsight_it.postviewer.data.api.mapper
 
 import com.machineinsight_it.postviewer.data.api.model.AddressDto
+import com.machineinsight_it.postviewer.data.db.model.AddressEntity
 import com.machineinsight_it.postviewer.domain.Address
 
 fun AddressDto.canBeCastToAddress(): Boolean {
@@ -30,5 +31,20 @@ fun AddressDto.toAddress(): Address {
         city = city,
         zipcode = zipcode,
         geo = geo?.toGeo()
+    )
+}
+
+fun AddressDto.toEntity(): AddressEntity {
+    checkNotNull(street)
+    checkNotNull(city)
+    checkNotNull(zipcode)
+
+    return AddressEntity(
+        id = null,
+        street = street,
+        suite = suite,
+        city = city,
+        zipcode = zipcode,
+        geo = geo?.toEntity()
     )
 }

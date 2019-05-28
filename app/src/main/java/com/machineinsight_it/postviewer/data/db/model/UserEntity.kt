@@ -1,10 +1,10 @@
-package com.machineinsight_it.postviewer.data.db
+package com.machineinsight_it.postviewer.data.db.model
 
 import androidx.room.Embedded
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
-@Entity
+@Entity(tableName = "users")
 data class UserEntity(
     @PrimaryKey
     var id: Int,

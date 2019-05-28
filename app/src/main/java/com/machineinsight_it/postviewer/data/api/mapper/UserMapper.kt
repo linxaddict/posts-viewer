@@ -1,6 +1,7 @@
 package com.machineinsight_it.postviewer.data.api.mapper
 
 import com.machineinsight_it.postviewer.data.api.model.UserDto
+import com.machineinsight_it.postviewer.data.db.model.UserEntity
 import com.machineinsight_it.postviewer.domain.User
 
 fun UserDto.canBeCastToUser(): Boolean {
@@ -33,5 +34,22 @@ fun UserDto.toUser(): User {
         phone = phone,
         website = website,
         company = company?.toCompany()
+    )
+}
+
+fun UserDto.toEntity(): UserEntity {
+    checkNotNull(id)
+    checkNotNull(username)
+    checkNotNull(email)
+
+    return UserEntity(
+        id = id,
+        name = name,
+        username = username,
+        email = email,
+        address = address?.toEntity(),
+        phone = phone,
+        website = website,
+        company = company?.toEntity()
     )
 }

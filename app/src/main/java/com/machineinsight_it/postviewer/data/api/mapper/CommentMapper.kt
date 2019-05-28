@@ -1,6 +1,7 @@
 package com.machineinsight_it.postviewer.data.api.mapper
 
 import com.machineinsight_it.postviewer.data.api.model.CommentDto
+import com.machineinsight_it.postviewer.data.db.model.CommentEntity
 import com.machineinsight_it.postviewer.domain.Comment
 
 fun CommentDto.canBeCastToComment(): Boolean {
@@ -30,6 +31,21 @@ fun CommentDto.toComment(): Comment {
     checkNotNull(body)
 
     return Comment(
+        postId = postId,
+        id = id,
+        name = name,
+        email = email,
+        body = body
+    )
+}
+
+fun CommentDto.toEntity(): CommentEntity {
+    checkNotNull(postId)
+    checkNotNull(id)
+    checkNotNull(email)
+    checkNotNull(body)
+
+    return CommentEntity(
         postId = postId,
         id = id,
         name = name,
