@@ -17,4 +17,5 @@ class UsersRepository(private val api: PostsApi, private val dao: UserDao) {
             .map { it.toEntity() }
             .doOnNext { dao.insertUsers(it) }
             .map { it.toUser() }
+            .onExceptionResumeNext { dao.getUsers().map { it.toUser() } }
 }

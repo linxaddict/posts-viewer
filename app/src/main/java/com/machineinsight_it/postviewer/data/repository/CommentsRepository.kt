@@ -17,4 +17,5 @@ class CommentsRepository(private val api: PostsApi, private val dao: CommentDao)
             .map { it.toEntity() }
             .doOnNext { dao.insertComments(it) }
             .map { it.toComment() }
+            .onExceptionResumeNext { dao.getComments().map { it.toComment() } }
 }
