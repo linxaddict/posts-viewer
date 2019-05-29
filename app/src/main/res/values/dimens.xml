@@ -14,4 +14,6 @@
     <dimen name="font_xlarge">20sp</dimen>
     <dimen name="font_xxlarge">24sp</dimen>
 
+    <dimen name="avatar_size">64dp</dimen>
+
 </resources>

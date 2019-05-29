@@ -11,6 +11,9 @@ interface CommentDao {
     @Query("SELECT * FROM comments")
     fun getComments(): List<CommentEntity>
 
+    @Query("SELECT * FROM comments WHERE postId = :postId")
+    fun getComments(postId: Int): List<CommentEntity>
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertComments(vararg comments: CommentEntity)
 

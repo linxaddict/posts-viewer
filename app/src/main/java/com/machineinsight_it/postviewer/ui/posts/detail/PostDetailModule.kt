@@ -3,6 +3,8 @@ package com.machineinsight_it.postviewer.ui.posts.detail
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
+import com.machineinsight_it.postviewer.data.repository.CommentsRepository
+import com.machineinsight_it.postviewer.data.repository.UsersRepository
 import com.machineinsight_it.postviewer.ui.di.ViewModelKey
 import dagger.Module
 import dagger.Provides
@@ -26,7 +28,9 @@ abstract class PostDetailModule {
         @Provides
         @IntoMap
         @ViewModelKey(PostDetailViewModel::class)
-        fun providePostDetailViewModel(): ViewModel = PostDetailViewModel()
+        fun providePostDetailViewModel(commentsRepository: CommentsRepository,
+                                       usersRepository: UsersRepository): ViewModel =
+            PostDetailViewModel(commentsRepository, usersRepository)
     }
 
     @Module
