@@ -16,7 +16,15 @@ class UsersRepository(private val api: PostsApi, private val dao: UserDao) {
             .flatMapIterable { it }
             .filter { it.canBeCastToUser() }
             .map { it.toEntity() }
-            .doOnNext { dao.insertUsers(it) }
+            .toList()
+            .toFlowable()
+            .doOnNext {
+                dao.clear()
+                dao.insertUsers(*it.toTypedArray())
+            }
+            .flatMapIterable { it }
             .map { it.toUser() }
-            .onErrorResumeNext { _: Throwable ->  dao.getUsers().map { it.toUser() }}
+            .onErrorResumeNext { _: Throwable ->
+                Flowable.fromIterable(dao.getUsers()).map { it.toUser() }
+            }
 }

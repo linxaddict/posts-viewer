@@ -5,12 +5,11 @@ import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import com.machineinsight_it.postviewer.data.db.model.CommentEntity
-import io.reactivex.Flowable
 
 @Dao
 interface CommentDao {
     @Query("SELECT * FROM comments")
-    fun getComments(): Flowable<CommentEntity>
+    fun getComments(): List<CommentEntity>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertComments(vararg comments: CommentEntity)

@@ -15,7 +15,15 @@ class CommentsRepository(private val api: PostsApi, private val dao: CommentDao)
             .flatMapIterable { it }
             .filter { it.canBeCastToComment() }
             .map { it.toEntity() }
-            .doOnNext { dao.insertComments(it) }
+            .toList()
+            .toFlowable()
+            .doOnNext {
+                dao.clear()
+                dao.insertComments(*it.toTypedArray())
+            }
+            .flatMapIterable { it }
             .map { it.toComment() }
-            .onErrorResumeNext { _: Throwable ->  dao.getComments().map { it.toComment() }}
+            .onErrorResumeNext { _: Throwable ->
+                Flowable.fromIterable(dao.getComments()).map { it.toComment() }
+            }
 }

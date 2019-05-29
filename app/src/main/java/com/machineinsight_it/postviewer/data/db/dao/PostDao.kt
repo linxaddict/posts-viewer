@@ -5,12 +5,11 @@ import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import com.machineinsight_it.postviewer.data.db.model.PostEntity
-import io.reactivex.Flowable
 
 @Dao
 interface PostDao {
     @Query("SELECT * FROM posts")
-    fun getPosts(): Flowable<PostEntity>
+    fun getPosts(): List<PostEntity>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertPosts(vararg posts: PostEntity)

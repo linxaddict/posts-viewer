@@ -7,6 +7,7 @@ import com.machineinsight_it.postviewer.data.db.dao.PostDao
 import com.machineinsight_it.postviewer.data.db.mapper.toPost
 import com.machineinsight_it.postviewer.domain.Post
 import io.reactivex.Flowable
+import io.reactivex.Observable
 
 class PostsRepository(private val api: PostsApi, private val dao: PostDao) {
     fun getPosts(): Flowable<Post> =
@@ -15,7 +16,15 @@ class PostsRepository(private val api: PostsApi, private val dao: PostDao) {
             .flatMapIterable { it }
             .filter { it.canBeCastToPost() }
             .map { it.toEntity() }
-            .doOnNext { dao.insertPosts(it) }
+            .toList()
+            .toFlowable()
+            .doOnNext {
+                dao.clear()
+                dao.insertPosts(*it.toTypedArray())
+            }
+            .flatMapIterable { it }
             .map { it.toPost() }
-            .onErrorResumeNext { _: Throwable ->  dao.getPosts().map { it.toPost() }}
+            .onErrorResumeNext { _: Throwable ->
+                Flowable.fromIterable(dao.getPosts()).map { it.toPost() }
+            }
 }
