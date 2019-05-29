@@ -13,9 +13,8 @@
         tools:layout="@layout/fragment_posts_list">
 
         <action
-                android:id="@+id/action_postsListFragment_to_postDetailFragment"
-                app:destination="@id/postDetailFragment"
-        />
+            android:id="@+id/action_postsListFragment_to_postDetailFragment"
+            app:destination="@id/postDetailFragment"/>
 
     </fragment>
 

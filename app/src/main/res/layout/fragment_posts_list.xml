@@ -7,10 +7,6 @@
         <variable
             name="model"
             type="com.machineinsight_it.postviewer.ui.posts.list.PostsListViewModel"/>
-
-        <variable
-            name="itemBinding"
-            type="me.tatarka.bindingcollectionadapter2.ItemBinding"/>
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -26,13 +22,12 @@
             app:enabled="@{true}">
 
             <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/posts"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                app:items="@{model.posts}"
-                app:itemBinding="@{itemBinding}"/>
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
 
         </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 

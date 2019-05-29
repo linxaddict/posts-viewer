@@ -8,10 +8,6 @@
         <variable
             name="model"
             type="com.machineinsight_it.postviewer.ui.posts.list.PostViewModel"/>
-
-        <variable
-            name="action"
-            type="com.machineinsight_it.postviewer.ui.posts.list.OnItemClickListener"/>
     </data>
 
     <androidx.cardview.widget.CardView
@@ -21,7 +17,6 @@
         android:layout_marginEnd="@dimen/padding_large"
         android:layout_marginTop="@dimen/padding_default"
         android:layout_marginBottom="@dimen/padding_small"
-        android:onClick="@{(v) -> action.onItemClick(v, model)}"
         android:foreground="?attr/selectableItemBackground">
 
         <androidx.constraintlayout.widget.ConstraintLayout

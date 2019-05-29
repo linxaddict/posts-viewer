@@ -70,8 +70,7 @@ dependencies {
     implementation 'android.arch.persistence.room:rxjava2:2.0.0'
     kapt 'androidx.room:room-compiler:2.0.0'
 
-    implementation 'me.tatarka.bindingcollectionadapter2:bindingcollectionadapter:3.0.0'
-    implementation 'me.tatarka.bindingcollectionadapter2:bindingcollectionadapter-recyclerview:3.0.0'
+    implementation 'com.github.nitrico.lastadapter:lastadapter:2.3.0'
 
     testImplementation 'junit:junit:4.12'
 
