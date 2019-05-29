@@ -1,5 +1,6 @@
 package com.machineinsight_it.postviewer.ui.posts.list
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -14,6 +15,7 @@ import com.machineinsight_it.postviewer.BR
 import com.machineinsight_it.postviewer.R
 import com.machineinsight_it.postviewer.databinding.FragmentPostsListBinding
 import com.machineinsight_it.postviewer.domain.Post
+import com.machineinsight_it.postviewer.ui.main.MainScreenController
 import dagger.android.support.AndroidSupportInjection
 import me.tatarka.bindingcollectionadapter2.ItemBinding
 import org.jetbrains.anko.design.longSnackbar
@@ -25,6 +27,7 @@ interface OnItemClickListener {
 
 class PostsListFragment : Fragment() {
     private lateinit var binding: FragmentPostsListBinding
+    private var mainScreenController: MainScreenController? = null
 
     private val itemAction = object : OnItemClickListener {
         override fun onItemClick(view: View, item: PostViewModel) {
@@ -61,6 +64,8 @@ class PostsListFragment : Fragment() {
             .bindExtra(BR.action, itemAction)
         binding.swipeRefresh.setOnRefreshListener { viewModel.fetchPosts() }
 
+        mainScreenController?.setToolbarTitle(R.string.title_posts)
+
         return binding.root
     }
 
@@ -68,5 +73,18 @@ class PostsListFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         postponeEnterTransition()
         view.doOnPreDraw { startPostponedEnterTransition() }
+    }
+
+    override fun onAttach(context: Context?) {
+        super.onAttach(context)
+
+        if (context is MainScreenController) {
+            mainScreenController = context
+        }
+    }
+
+    override fun onDetach() {
+        super.onDetach()
+        mainScreenController = null
     }
 }

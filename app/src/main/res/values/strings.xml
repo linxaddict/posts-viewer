@@ -2,4 +2,6 @@
     <string name="app_name">PostViewer</string>
     <string name="error_cannot_fetch_posts">Unable to fetch posts</string>
     <string name="avatar">User avatar</string>
+    <string name="title_posts">Posts</string>
+    <string name="title_post_detail">Post detail</string>
 </resources>

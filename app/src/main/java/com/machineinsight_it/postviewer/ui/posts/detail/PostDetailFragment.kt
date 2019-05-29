@@ -1,5 +1,6 @@
 package com.machineinsight_it.postviewer.ui.posts.detail
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -11,6 +12,7 @@ import androidx.navigation.fragment.navArgs
 import androidx.transition.TransitionInflater
 import com.machineinsight_it.postviewer.R
 import com.machineinsight_it.postviewer.databinding.FragmentPostDetailBinding
+import com.machineinsight_it.postviewer.ui.main.MainScreenController
 import dagger.android.support.AndroidSupportInjection
 import javax.inject.Inject
 
@@ -20,6 +22,8 @@ class PostDetailFragment : Fragment() {
 
     @Inject
     lateinit var viewModel: PostDetailViewModel
+
+    private var mainScreenController: MainScreenController? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,6 +40,8 @@ class PostDetailFragment : Fragment() {
         val transitionName = "post_${args.post.id}"
         binding.content.transitionName = transitionName
 
+        mainScreenController?.setToolbarTitle(R.string.title_post_detail)
+
         return binding.root
     }
 
@@ -43,5 +49,18 @@ class PostDetailFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         postponeEnterTransition()
         view.doOnPreDraw { startPostponedEnterTransition() }
+    }
+
+    override fun onAttach(context: Context?) {
+        super.onAttach(context)
+
+        if (context is MainScreenController) {
+            mainScreenController = context
+        }
+    }
+
+    override fun onDetach() {
+        super.onDetach()
+        mainScreenController = null
     }
 }
