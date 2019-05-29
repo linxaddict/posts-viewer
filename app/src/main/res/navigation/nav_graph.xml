@@ -26,6 +26,12 @@
         android:id="@+id/postDetailFragment"
         android:name="com.machineinsight_it.postviewer.ui.posts.detail.PostDetailFragment"
         android:label="PostDetailFragment"
-        tools:layout="@layout/fragment_post_detail"/>
+        tools:layout="@layout/fragment_post_detail">
+
+        <argument
+            android:name="post"
+            app:argType="com.machineinsight_it.postviewer.domain.Post"/>
+
+    </fragment>
 
 </navigation>

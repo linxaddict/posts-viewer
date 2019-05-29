@@ -1,5 +1,9 @@
 package com.machineinsight_it.postviewer.domain
 
+import android.os.Parcelable
+import kotlinx.android.parcel.Parcelize
+
+@Parcelize
 data class User(
     val id: Int,
     val name: String?,
@@ -9,4 +13,4 @@ data class User(
     val phone: String?,
     val website: String?,
     val company: Company?
-)
+) : Parcelable

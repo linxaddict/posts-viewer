@@ -25,7 +25,8 @@ class PostsListFragment : Fragment() {
 
     private val itemAction = object : OnItemClickListener {
         override fun onItemClick(item: PostViewModel) {
-            findNavController().navigate(R.id.postDetailFragment)
+            val action = PostsListFragmentDirections.actionPostsListFragmentToPostDetailFragment(item.post)
+            findNavController().navigate(action)
         }
     }
 
