@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.navArgs
+import androidx.transition.TransitionInflater
 import com.machineinsight_it.postviewer.R
 import com.machineinsight_it.postviewer.databinding.FragmentPostDetailBinding
 import dagger.android.support.AndroidSupportInjection
@@ -23,12 +24,17 @@ class PostDetailFragment : Fragment() {
         super.onCreate(savedInstanceState)
 
         AndroidSupportInjection.inject(this)
-        System.out.println("received post ${args.post}")
+        viewModel.setPost(args.post)
+        sharedElementEnterTransition = TransitionInflater.from(context).inflateTransition(android.R.transition.move)
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_post_detail, container, false)
         binding.model = viewModel
+
+        val transitionName = "post_${args.post.id}"
+        binding.content.transitionName = transitionName
+
         return binding.root
     }
 }

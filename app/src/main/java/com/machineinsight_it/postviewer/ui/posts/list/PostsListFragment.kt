@@ -7,26 +7,34 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.FragmentNavigatorExtras
 import androidx.navigation.fragment.findNavController
 import com.machineinsight_it.postviewer.BR
 import com.machineinsight_it.postviewer.R
 import com.machineinsight_it.postviewer.databinding.FragmentPostsListBinding
+import com.machineinsight_it.postviewer.domain.Post
 import dagger.android.support.AndroidSupportInjection
 import me.tatarka.bindingcollectionadapter2.ItemBinding
 import org.jetbrains.anko.design.longSnackbar
 import javax.inject.Inject
 
 interface OnItemClickListener {
-    fun onItemClick(item: PostViewModel)
+    fun onItemClick(view: View, item: PostViewModel)
 }
 
 class PostsListFragment : Fragment() {
     private lateinit var binding: FragmentPostsListBinding
 
     private val itemAction = object : OnItemClickListener {
-        override fun onItemClick(item: PostViewModel) {
+        override fun onItemClick(view: View, item: PostViewModel) {
+            val transitionName = "post_${item.post.id}"
+            val extras = FragmentNavigatorExtras(
+                view to transitionName
+            )
             val action = PostsListFragmentDirections.actionPostsListFragmentToPostDetailFragment(item.post)
-            findNavController().navigate(action)
+            view.transitionName = transitionName
+
+            findNavController().navigate(action, extras)
         }
     }
 

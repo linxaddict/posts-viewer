@@ -21,10 +21,11 @@
         android:layout_marginEnd="@dimen/padding_large"
         android:layout_marginTop="@dimen/padding_default"
         android:layout_marginBottom="@dimen/padding_small"
-        android:onClick="@{() -> action.onItemClick(model)}"
+        android:onClick="@{(v) -> action.onItemClick(v, model)}"
         android:foreground="?attr/selectableItemBackground">
 
         <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/content"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingStart="@dimen/padding_default"
