@@ -1,6 +1,5 @@
 package com.machineinsight_it.postviewer.ui.posts.list
 
-import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -16,14 +15,12 @@ import com.machineinsight_it.postviewer.BR
 import com.machineinsight_it.postviewer.R
 import com.machineinsight_it.postviewer.databinding.FragmentPostsListBinding
 import com.machineinsight_it.postviewer.databinding.RowPostBinding
-import com.machineinsight_it.postviewer.ui.main.MainScreenController
 import dagger.android.support.AndroidSupportInjection
 import org.jetbrains.anko.design.longSnackbar
 import javax.inject.Inject
 
 class PostsListFragment : Fragment() {
     private lateinit var binding: FragmentPostsListBinding
-    private var mainScreenController: MainScreenController? = null
 
     @Inject
     lateinit var viewModel: PostsListViewModel
@@ -67,21 +64,6 @@ class PostsListFragment : Fragment() {
             .map<PostViewModel>(type)
             .into(binding.posts)
 
-        mainScreenController?.setToolbarTitle(R.string.title_posts)
-
         return binding.root
-    }
-
-    override fun onAttach(context: Context?) {
-        super.onAttach(context)
-
-        if (context is MainScreenController) {
-            mainScreenController = context
-        }
-    }
-
-    override fun onDetach() {
-        super.onDetach()
-        mainScreenController = null
     }
 }

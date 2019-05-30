@@ -9,7 +9,7 @@
     <fragment
         android:id="@+id/postsListFragment"
         android:name="com.machineinsight_it.postviewer.ui.posts.list.PostsListFragment"
-        android:label="PostsListFragment"
+        android:label="@string/title_post_detail"
         tools:layout="@layout/fragment_posts_list">
 
         <action
@@ -21,7 +21,7 @@
     <fragment
         android:id="@+id/postDetailFragment"
         android:name="com.machineinsight_it.postviewer.ui.posts.detail.PostDetailFragment"
-        android:label="PostDetailFragment"
+        android:label="@string/title_post_detail"
         tools:layout="@layout/fragment_post_detail">
 
         <argument
