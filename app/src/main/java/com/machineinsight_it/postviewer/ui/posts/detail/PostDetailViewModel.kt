@@ -45,7 +45,7 @@ class PostDetailViewModel(private val commentsRepository: CommentsRepository,
         commentsVisible.set(false)
     }
 
-    private fun loadPostAuthor(post: Post) {
+    fun loadPostAuthor(post: Post) {
         usersRepository.getUser(post.userId)
             .delay(500, TimeUnit.MILLISECONDS)
             .subscribeOn(Schedulers.io())
@@ -57,7 +57,7 @@ class PostDetailViewModel(private val commentsRepository: CommentsRepository,
             .register()
     }
 
-    private fun loadComments(post: Post) {
+    fun loadComments(post: Post) {
         commentsRepository.getComments(post.id)
             .delay(1000, TimeUnit.MILLISECONDS)
             .map { CommentViewModel(it) }
