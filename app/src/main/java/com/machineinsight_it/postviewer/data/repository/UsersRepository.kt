@@ -22,6 +22,11 @@ class UsersRepository(private val api: PostsApi, private val dao: UserDao) {
             }
             .map { it.toUser() }
             .onErrorResumeNext { _: Throwable ->
-                Single.just(dao.getUser(id)).map { it.toUser() }
+                val user = dao.getUser(id)
+                if (user != null) {
+                    Single.just(dao.getUser(id)).map { it.toUser() }
+                } else {
+                    return@onErrorResumeNext Single.error(NoSuchElementException())
+                }
             }
 }

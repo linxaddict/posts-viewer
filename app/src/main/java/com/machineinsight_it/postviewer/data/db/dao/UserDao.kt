@@ -12,7 +12,7 @@ interface UserDao {
     fun getUsers(): List<UserEntity>
 
     @Query("SELECT * FROM users WHERE id = :id")
-    fun getUser(id: Int): UserEntity
+    fun getUser(id: Int): UserEntity?
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertUsers(vararg users: UserEntity)
