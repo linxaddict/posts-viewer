@@ -30,10 +30,8 @@ fun UserDto.toUser(): User {
         name = name,
         username = username,
         email = email,
-        address = address?.toAddress(),
         phone = phone,
-        website = website,
-        company = company?.toCompany()
+        website = website
     )
 }
 
@@ -47,9 +45,7 @@ fun UserDto.toEntity(): UserEntity {
         name = name,
         username = username,
         email = email,
-        address = address?.toEntity(),
         phone = phone,
-        website = website,
-        company = company?.toEntity()
+        website = website
     )
 }

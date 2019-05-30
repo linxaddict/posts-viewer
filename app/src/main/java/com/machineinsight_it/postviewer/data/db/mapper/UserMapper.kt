@@ -8,8 +8,6 @@ fun UserEntity.toUser(): User = User(
     name = name,
     username = username,
     email = email,
-    address = address?.toAddress(),
     phone = phone,
-    website = website,
-    company = company?.toCompany()
+    website = website
 )

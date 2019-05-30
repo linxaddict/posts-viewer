@@ -5,8 +5,6 @@ data class UserDto(
     val name: String?,
     val username: String?,
     val email: String?,
-    val address: AddressDto?,
     val phone: String?,
-    val website: String?,
-    val company: CompanyDto?
+    val website: String?
 )
