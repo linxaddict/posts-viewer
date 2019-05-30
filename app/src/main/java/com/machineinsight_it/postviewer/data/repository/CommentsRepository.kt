@@ -9,8 +9,8 @@ import com.machineinsight_it.postviewer.domain.Comment
 import io.reactivex.Flowable
 
 class CommentsRepository(private val api: PostsApi, private val dao: CommentDao) {
-    fun getComments(): Flowable<Comment> =
-        api.fetchComments()
+    fun getComments(id: Int): Flowable<Comment> =
+        api.fetchComments(id)
             .toFlowable()
             .flatMapIterable { it }
             .filter { it.canBeCastToComment() }
@@ -24,6 +24,6 @@ class CommentsRepository(private val api: PostsApi, private val dao: CommentDao)
             .flatMapIterable { it }
             .map { it.toComment() }
             .onErrorResumeNext { _: Throwable ->
-                Flowable.fromIterable(dao.getComments()).map { it.toComment() }
+                Flowable.fromIterable(dao.getComments(id)).map { it.toComment() }
             }
 }

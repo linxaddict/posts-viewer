@@ -9,6 +9,8 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.navArgs
 import androidx.transition.TransitionInflater
+import com.github.nitrico.lastadapter.LastAdapter
+import com.machineinsight_it.postviewer.BR
 import com.machineinsight_it.postviewer.R
 import com.machineinsight_it.postviewer.databinding.FragmentPostDetailBinding
 import com.machineinsight_it.postviewer.ui.main.MainScreenController
@@ -40,6 +42,10 @@ class PostDetailFragment : Fragment() {
         binding.content.transitionName = transitionName
 
         mainScreenController?.setToolbarTitle(R.string.title_post_detail)
+
+        LastAdapter(viewModel.comments, BR.model)
+            .map<CommentViewModel>(R.layout.row_comment)
+            .into(binding.comments)
 
         return binding.root
     }

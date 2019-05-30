@@ -14,12 +14,6 @@ interface PostsApi {
     @GET("/comments")
     fun fetchComments(@Query("postId") postId: Int): Single<List<CommentDto>>
 
-    @GET("/comments")
-    fun fetchComments(): Single<List<CommentDto>>
-
     @GET("/users")
     fun fetchUser(@Query("id") userId: Int): Single<List<UserDto>>
-
-    @GET("/users")
-    fun fetchUsers(): Single<List<UserDto>>
 }

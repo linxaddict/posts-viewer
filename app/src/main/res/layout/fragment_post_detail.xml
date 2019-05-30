@@ -18,92 +18,132 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="@dimen/padding_large"
-            android:animateLayoutChanges="true">
+            android:layout_height="match_parent">
 
-            <TextView
-                android:id="@+id/title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@{model.title}"
-                android:textColor="@color/colorPrimary"
-                android:textSize="@dimen/font_xlarge"
-                android:fontFamily="sans-serif-medium"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:text="Post title"/>
-
-            <Space
-                android:id="@+id/titleDivider"
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/padding_large"
-                app:layout_constraintTop_toBottomOf="@id/title"/>
-
-            <ImageView
-                android:id="@+id/avatar"
-                android:layout_width="@dimen/avatar_size"
-                android:layout_height="@dimen/avatar_size"
-                android:contentDescription="@string/avatar"
-                android:background="@drawable/ic_circle_white"
-                app:clipToOutline="@{true}"
-                app:imageUrl="@{model.avatar}"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/titleDivider"
-                app:visibility="@{model.userVisible}"/>
-
-            <TextView
-                android:id="@+id/userName"
-                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/padding_large"
-                android:text="@{model.userName}"
-                android:textColor="@color/colorPrimaryText"
-                android:textSize="@dimen/font_large"
-                android:fontFamily="sans-serif"
-                app:layout_constraintStart_toEndOf="@id/avatar"
-                app:layout_constraintTop_toTopOf="@id/avatar"
-                app:layout_constraintBottom_toTopOf="@id/email"
-                app:layout_constraintVertical_chainStyle="packed"
-                app:visibility="@{model.userVisible}"
-                tools:text="Post body"/>
+                android:paddingTop="@dimen/padding_large"
+                android:paddingBottom="@dimen/padding_large"
+                android:animateLayoutChanges="true">
 
-            <TextView
-                android:id="@+id/email"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/padding_large"
-                android:text="@{model.email}"
-                android:textColor="@color/colorPrimaryText"
-                android:textSize="@dimen/font_large"
-                android:fontFamily="sans-serif-light"
-                app:layout_constraintStart_toEndOf="@id/avatar"
-                app:layout_constraintTop_toBottomOf="@id/userName"
-                app:layout_constraintBottom_toBottomOf="@id/avatar"
-                app:visibility="@{model.userVisible}"
-                tools:text="Post body"/>
+                <TextView
+                    android:id="@+id/title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/padding_large"
+                    android:layout_marginEnd="@dimen/padding_large"
+                    android:text="@{model.title}"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="@dimen/font_xlarge"
+                    android:fontFamily="sans-serif-medium"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="Post title"/>
 
-            <Space
-                android:id="@+id/contentDivider"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/padding_large"
-                app:layout_constraintTop_toBottomOf="@id/avatar"/>
+                <Space
+                    android:id="@+id/titleDivider"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/padding_large"
+                    app:layout_constraintTop_toBottomOf="@id/title"/>
 
-            <TextView
-                android:id="@+id/body"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@{model.body}"
-                android:textColor="@color/colorPrimaryText"
-                android:fontFamily="sans-serif-light"
-                android:ellipsize="end"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/contentDivider"
-                tools:text="Post body"/>
+                <ImageView
+                    android:id="@+id/avatar"
+                    android:layout_width="@dimen/avatar_size"
+                    android:layout_height="@dimen/avatar_size"
+                    android:layout_marginStart="@dimen/padding_large"
+                    android:layout_marginEnd="@dimen/padding_large"
+                    android:contentDescription="@string/avatar"
+                    android:background="@drawable/ic_circle_white"
+                    app:clipToOutline="@{true}"
+                    app:imageUrl="@{model.avatar}"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/titleDivider"
+                    app:visibility="@{model.userVisible}"/>
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+                <TextView
+                    android:id="@+id/userName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/padding_large"
+                    android:layout_marginEnd="@dimen/padding_large"
+                    android:text="@{model.userName}"
+                    android:textColor="@color/colorPrimaryText"
+                    android:textSize="@dimen/font_large"
+                    android:fontFamily="sans-serif"
+                    app:layout_constraintStart_toEndOf="@id/avatar"
+                    app:layout_constraintTop_toTopOf="@id/avatar"
+                    app:layout_constraintBottom_toTopOf="@id/email"
+                    app:layout_constraintVertical_chainStyle="packed"
+                    app:visibility="@{model.userVisible}"
+                    tools:text="Post body"/>
+
+                <TextView
+                    android:id="@+id/email"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/padding_large"
+                    android:layout_marginEnd="@dimen/padding_large"
+                    android:text="@{model.email}"
+                    android:textColor="@color/colorPrimaryText"
+                    android:textSize="@dimen/font_large"
+                    android:fontFamily="sans-serif-light"
+                    app:layout_constraintStart_toEndOf="@id/avatar"
+                    app:layout_constraintTop_toBottomOf="@id/userName"
+                    app:layout_constraintBottom_toBottomOf="@id/avatar"
+                    app:visibility="@{model.userVisible}"
+                    tools:text="test@email.com"/>
+
+                <Space
+                    android:id="@+id/contentDivider"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/padding_large"
+                    app:layout_constraintTop_toBottomOf="@id/avatar"/>
+
+                <TextView
+                    android:id="@+id/body"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingStart="@dimen/padding_large"
+                    android:paddingEnd="@dimen/padding_large"
+                    android:text="@{model.body}"
+                    android:textColor="@color/colorPrimaryText"
+                    android:fontFamily="sans-serif-light"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/contentDivider"
+                    tools:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur at quam ut nibh vestibulum pretium vel sollicitudin risus. Fusce porttitor est vitae leo viverra, ac ullamcorper nisl consectetur."/>
+
+                <TextView
+                    android:id="@+id/commentsHeader"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/padding_large"
+                    android:layout_marginStart="@dimen/padding_large"
+                    android:layout_marginEnd="@dimen/padding_large"
+                    android:text="@string/comments"
+                    android:textSize="@dimen/font_large"
+                    android:textColor="@color/colorPrimaryText"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/body"
+                    app:visibility="@{model.commentsVisible}"/>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/comments"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/padding_large"
+                    app:layout_constraintTop_toBottomOf="@id/commentsHeader"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    app:visibility="@{model.commentsVisible}"
+                    app:nestedScrollingEnabled="@{false}"/>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </ScrollView>
 
     </androidx.cardview.widget.CardView>
 

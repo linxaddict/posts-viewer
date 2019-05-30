@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="model"
+            type="com.machineinsight_it.postviewer.ui.posts.detail.CommentViewModel"/>
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingStart="@dimen/padding_large"
+        android:paddingTop="@dimen/padding_default"
+        android:paddingEnd="@dimen/padding_large"
+        android:paddingBottom="@dimen/padding_default">
+
+        <ImageView
+            android:id="@+id/avatar"
+            android:layout_width="@dimen/avatar_small_size"
+            android:layout_height="@dimen/avatar_small_size"
+            android:contentDescription="@string/avatar"
+            android:background="@drawable/ic_circle_white"
+            app:clipToOutline="@{true}"
+            app:imageUrl="@{model.avatar}"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <TextView
+            android:id="@+id/userName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/padding_large"
+            android:layout_marginEnd="@dimen/padding_large"
+            android:text="@{model.name}"
+            android:textColor="@color/colorPrimaryText"
+            android:fontFamily="sans-serif"
+            app:layout_constraintStart_toEndOf="@id/avatar"
+            app:layout_constraintTop_toTopOf="@id/avatar"
+            app:layout_constraintBottom_toTopOf="@id/email"
+            app:layout_constraintVertical_chainStyle="spread"
+            tools:text="User name"/>
+
+        <TextView
+            android:id="@+id/email"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/padding_large"
+            android:text="@{model.email}"
+            android:textColor="@color/colorPrimaryText"
+            android:textSize="@dimen/font_small"
+            android:fontFamily="sans-serif-light"
+            app:layout_constraintStart_toEndOf="@id/avatar"
+            app:layout_constraintTop_toBottomOf="@id/userName"
+            app:layout_constraintBottom_toBottomOf="@id/avatar"
+            tools:text="email@test.com"/>
+
+        <Space
+            android:id="@+id/contentDivider"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/padding_large"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/email"/>
+
+        <TextView
+            android:id="@+id/comment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{model.body}"
+            android:textColor="@color/colorPrimaryText"
+            android:textSize="@dimen/font_small"
+            android:fontFamily="sans-serif-light"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/contentDivider"
+            tools:text="Comment"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:layout_marginStart="@dimen/padding_large"
+            android:layout_marginEnd="@dimen/padding_large"
+            android:background="@color/colorDivider"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/comment"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>
