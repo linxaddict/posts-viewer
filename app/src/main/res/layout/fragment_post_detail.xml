@@ -33,13 +33,13 @@
                     android:id="@+id/title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/padding_large"
-                    android:layout_marginEnd="@dimen/padding_large"
+                    android:paddingStart="@dimen/padding_large"
+                    android:paddingEnd="@dimen/padding_large"
                     android:text="@{model.title}"
                     android:textColor="@color/colorPrimary"
                     android:textSize="@dimen/font_xlarge"
                     android:fontFamily="sans-serif-medium"
-                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     tools:text="Post title"/>
 
