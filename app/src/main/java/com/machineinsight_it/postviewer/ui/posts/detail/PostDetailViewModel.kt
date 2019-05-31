@@ -3,6 +3,7 @@ package com.machineinsight_it.postviewer.ui.posts.detail
 import androidx.databinding.ObservableArrayList
 import androidx.databinding.ObservableBoolean
 import androidx.databinding.ObservableField
+import androidx.databinding.ObservableInt
 import com.machineinsight_it.postviewer.data.repository.CommentsRepository
 import com.machineinsight_it.postviewer.data.repository.UsersRepository
 import com.machineinsight_it.postviewer.domain.Post
@@ -23,6 +24,7 @@ class PostDetailViewModel(private val commentsRepository: CommentsRepository,
 
     val userVisible = ObservableBoolean()
     val commentsVisible = ObservableBoolean()
+    val commentsCount = ObservableInt()
 
     private fun handleAuthorLoaded(it: User) {
         userName.set(it.username)
@@ -39,6 +41,7 @@ class PostDetailViewModel(private val commentsRepository: CommentsRepository,
         comments.clear()
         comments.addAll(it)
         commentsVisible.set(true)
+        commentsCount.set(it.size)
     }
 
     private fun handleCannotLoadComments() {

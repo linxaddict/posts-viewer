@@ -76,6 +76,7 @@ class PostDetailViewModelTest {
 
         val commentEmails = model.comments.map { it.email.get() }
         assertEquals(2, commentEmails.size)
+        assertEquals(2, model.commentsCount.get())
         assertTrue(commentEmails.contains(c1.email))
         assertTrue(commentEmails.contains(c2.email))
         assertTrue(model.commentsVisible.get())
